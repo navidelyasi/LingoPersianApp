@@ -1,0 +1,233 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Font sizes */
+  --font-size-xsmall: 9px;
+  --font-size-small: 12px;
+  --font-size-medium: 16px;
+  --font-size-large: 24px;
+  --font-size-xlarge: 32px;
+
+  /* Colors */
+  --color-primary: #61dafb;
+  --color-success: #62e368;
+  --color-red: #e63946;
+  --color-dark: #282c34;
+  --color-xdark: #1a1d23;
+  --color-light: #cfd0d1;
+}
+
+#root {
+  background-color: var(--color-dark);
+  min-height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+}
+
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/woff/IRANSansX-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/woff/IRANSansX-UltraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/woff/IRANSansX-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/woff/IRANSansX-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/woff/IRANSansX-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/woff/IRANSansX-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "IRANSansX";
+  src: url("/fonts/woff/IRANSansX-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+
+html * {
+  font-family: IRANSansX;
+}
+
+.general-button {
+  padding: 5px 10px;
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+  border-radius: 8px;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: var(--font-size-medium);
+  font-weight: 600;
+  height: 30px;
+  float: bottom;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.general-button:hover {
+  background-color: var(--color-primary);
+  color: #1a1d23;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(97, 218, 251, 0.4);
+}
+
+.general-button.active {
+  background-color: var(--color-primary);
+  color: var(--color-dark);
+  border: none;
+  transform: scale(1.05);
+}
+
+.general-button.done {
+  background-color: var(--color-primary);
+  color: var(--color-dark);
+}
+
+.general-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.exit-button {
+  background-color: transparent;
+  color: var(--color-red);
+  border: 1px solid var(--color-red);
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: var(--font-size-large);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.exit-button:hover {
+  background-color: var(--color-red);
+  color: var(--color-dark);
+  transform: translateY(-2px);
+}
+
+.general-text {
+  font-size: var(--font-size-large);
+  color: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.overlay-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+  z-index: 1000;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+}
+
+.left-button {
+  border-radius: 8px 0 0 8px;
+}
+
+.right-button {
+  border-radius: 0 8px 8px 0;
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ____________________________________________ */
+/* ___________________ overlay   ______________ */
+/* ____________________________________________ */
+
+.submitting-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+  z-index: 1000;
+}
+
+.submitting-content {
+  text-align: center;
+  color: white;
+  background-color: var(--color-xdark);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--color-light);
+  border-top: 4px solid var(--color-primary);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -109,9 +109,16 @@ const postSignup = async (req, res) => {
 
     const accessToken = jwt.sign(tokenPayload, process.env.ACCESS_TOKEN_SECRET);
 
-    return res
-      .status(200)
-      .json({ success: true, accessToken: accessToken, name: req.body.name });
+    return res.status(200).json({
+      success: true,
+      accessToken: accessToken,
+      user: {
+        id: newUser.id,
+        name: newUser.name,
+        email: newUser.email,
+      },
+      name: req.body.name,
+    });
   } catch (e) {
     return res.status(500).json({
       success: false,

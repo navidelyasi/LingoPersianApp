@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../../styles/auth-page.css";
 import "../../styles/index.css";
 
@@ -10,7 +11,43 @@ export default function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      setError("");
+      setLoading(true);
+
+      const response = await axios.post(
+        "http://localhost:3000/auth/login",
+        {
+          email: usernameRef.current.value,
+          password: passwordRef.current.value,
+        },
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+      console.log("response from login :", response.data);
+
+      if (response.data.success) {
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem("user-token", response.data.accessToken);
+        navigate("/home");
+      } else {
+        setError(response.data.message);
+      }
+
+      console.log("Login Successful:", response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error(
+        "Login Failed:",
+        error.response ? error.response.data : error.message
+      );
+      setError(error.response.data.message);
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="login-container">

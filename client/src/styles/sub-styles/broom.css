@@ -1,0 +1,316 @@
+.broom {
+  width: 120px;
+  height: 150px;
+  will-change: transform;
+}
+.broom-body {
+  position: absolute;
+  width: 55px;
+  height: 77px;
+  top: 33px;
+  left: 40px;
+  z-index: 100;
+  transform: inherit;
+}
+.broom-hat {
+  position: absolute;
+  width: 50px;
+  height: 40px;
+  left: 62px;
+  z-index: 101;
+  animation: hatanimation 3s ease-in-out infinite;
+}
+.broom-tail {
+  position: absolute;
+  width: 48px;
+  height: 46px;
+  left: 0px;
+  top: 101px;
+  z-index: 101;
+  animation: tailanimation 2s ease-in-out infinite;
+}
+
+@keyframes bodyanimation {
+  0% {
+    transform: rotate(0deg);
+    scale: 1;
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(-5deg);
+    scale: 1.02;
+    opacity: 0.9;
+  }
+  100% {
+    transform: rotate(0deg);
+    scale: 1;
+    opacity: 1;
+  }
+}
+@keyframes hatanimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes tailanimation {
+  0% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(6deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+@keyframes shakepumpkin {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.shaking-pumpkin {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  animation: shakepumpkin 1s ease-in-out infinite;
+}
+
+.shaking-pumpkin.selected {
+  scale: 2;
+  z-index: 2005;
+  opacity: 1;
+  left: 40%;
+  top: 40%;
+  animation: flyingPumpkin 6s ease-in-out infinite;
+}
+@keyframes flyingPumpkin {
+  0% {
+    transform: rotate(0deg) translateX(50px);
+  }
+  25% {
+    transform: rotate(-90deg) translateX(50px);
+  }
+  50% {
+    transform: rotate(-180deg) translateX(50px);
+  }
+  75% {
+    transform: rotate(-270deg);
+  }
+  100% {
+    transform: rotate(-360deg) translateX(50px);
+  }
+}
+
+/* __ _ _ _ _ _ _ __ _ _ _  pumpkins  */
+.pumpkin1 {
+  left: 130px;
+  top: 2px;
+}
+.pumpkin2 {
+  left: 66px;
+  top: 105px;
+}
+.pumpkin3 {
+  left: 130px;
+  top: 105px;
+}
+.pumpkin4 {
+  left: 130px;
+  top: 262px;
+}
+.pumpkin5 {
+  left: 130px;
+  top: 367px;
+}
+.pumpkin6 {
+  left: 66px;
+  top: 471px;
+}
+.pumpkin7 {
+  left: 312px;
+  top: 262px;
+}
+.pumpkin8 {
+  left: 312px;
+  top: 159px;
+}
+.pumpkin9 {
+  left: 250px;
+  top: 525px;
+}
+
+/* __ _ _ _ _ _ _ __ _ _ _  brooms  */
+.broom1 {
+  position: absolute;
+  left: 5px;
+  top: 165px;
+}
+.broom2 {
+  position: absolute;
+  left: 192px;
+  top: 54px;
+}
+.broom3 {
+  position: absolute;
+  left: 129px;
+  top: 420px;
+}
+.broom4 {
+  position: absolute;
+  left: 244px;
+  top: 270px;
+  transform: rotateY(180deg);
+}
+
+.broom1.selected,
+.broom2.selected,
+.broom3.selected {
+  animation: broomUp 1s ease-in-out infinite;
+}
+@keyframes broomUp {
+  0% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  25% {
+    transform: rotate(0deg) translateY(-100px);
+  }
+  50% {
+    transform: rotate(-10deg) translateY(-200px);
+  }
+  75% {
+    transform: rotate(0deg) translateY(-300px);
+  }
+  100% {
+    transform: rotate(0deg) translateY(-400px);
+  }
+}
+
+.broom4.selected {
+  animation: broomUp4 1s ease-in-out infinite;
+}
+@keyframes broomUp4 {
+  0% {
+    transform: rotateY(180deg) translateY(0px);
+  }
+  25% {
+    transform: rotateY(180deg) translateY(-100px);
+  }
+  50% {
+    transform: rotateY(180deg) rotate(-10deg) translateY(-200px);
+  }
+  75% {
+    transform: rotateY(180deg) translateY(-300px);
+  }
+  100% {
+    transform: rotateY(180deg) translateY(-400px);
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .pumpkin1 {
+    left: 100px;
+    top: -5px;
+    scale: 0.85;
+  }
+  .pumpkin2 {
+    left: 50px;
+    top: 82px;
+    scale: 0.85;
+  }
+  .pumpkin3 {
+    left: 100px;
+    top: 82px;
+    scale: 0.85;
+  }
+  .pumpkin4 {
+    left: 100px;
+    top: 210px;
+    scale: 0.85;
+  }
+  .pumpkin5 {
+    left: 100px;
+    top: 295px;
+    scale: 0.85;
+  }
+  .pumpkin6 {
+    left: 51px;
+    top: 381px;
+    scale: 0.85;
+  }
+  .pumpkin7 {
+    left: 250px;
+    top: 209px;
+    scale: 0.85;
+  }
+  .pumpkin8 {
+    left: 252px;
+    top: 125px;
+    scale: 0.85;
+  }
+  .pumpkin9 {
+    left: 200px;
+    top: 420px;
+    scale: 0.85;
+  }
+
+  /* __ _ _ _ _ _ _ __ _ _ _  brooms  */
+
+  .broom1 {
+    position: absolute;
+    left: -5px;
+    top: 117px;
+    scale: 0.8;
+  }
+  .broom2 {
+    position: absolute;
+    left: 142px;
+    top: 32px;
+    scale: 0.8;
+  }
+  .broom3 {
+    position: absolute;
+    left: 95px;
+    top: 330px;
+    scale: 0.8;
+  }
+  .broom4 {
+    position: absolute;
+    left: 188px;
+    top: 205px;
+    transform: rotateY(180deg);
+    scale: 0.8;
+  }
+}

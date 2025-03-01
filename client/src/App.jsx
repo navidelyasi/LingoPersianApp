@@ -5,7 +5,8 @@ import Login from "./pages/auth-pages/Login.jsx";
 import Signup from "./pages/auth-pages/Signup.jsx";
 import Index from "./pages/Index.jsx";
 import Home from "./pages/Home.jsx";
-import GamePage from "./pages/GamePage.jsx";
+import HalloweenGame from "./pages/HalloweenGame.jsx";
+import LocalHalloweenGame from "./pages/LocalHalloweenGame.jsx";
 import ProtectedRoute from "./pages/auth-pages/ProtectedRoute.jsx";
 import PublicRoute from "./pages/auth-pages/PublicRoute.jsx";
 
@@ -53,7 +54,15 @@ function App() {
           path="/game/:gameid"
           element={
             <ProtectedRoute>
-              <GamePage socket={socket} />
+              <HalloweenGame socket={socket} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/halloween-game"
+          element={
+            <ProtectedRoute>
+              <LocalHalloweenGame />
             </ProtectedRoute>
           }
         />

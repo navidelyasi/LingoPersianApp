@@ -162,6 +162,75 @@
   font-weight: bold;
 }
 
+/* __________    Game Card Description  _________   */
+.game-card-description-container {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-top: 1px solid var(--color-light);
+  padding: 10px;
+  margin: 10px;
+  font-size: var(--font-size-large);
+  color: var(--color-light);
+  position: relative;
+}
+
+.description-line {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--color-light);
+}
+
+.dice-menu {
+  margin-left: 20px;
+  width: 60px;
+  height: 60px;
+  animation: shaking-menu 1s ease-in-out infinite;
+}
+
+.pumpkin-menu {
+  width: 100px;
+  height: 100px;
+  animation: shaking-menu 1s ease-in-out infinite;
+}
+
+.broom-menu {
+  width: 50px;
+  height: 50px;
+  animation: shaking-menu 1s ease-in-out infinite;
+}
+
+@keyframes shaking-menu {
+  0% {
+    transform: rotate(0deg);
+    scale: 1;
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+    scale: 1.1;
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+    scale: 1;
+  }
+}
+
+.halloween-board-menu {
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.2;
+}
+
 /* __________    Screen  _________   */
 @media screen and (max-width: 768px) {
   .main-menu-container {
@@ -172,5 +241,10 @@
   }
   .menu-nav-button {
     padding: 3px 6px;
+  }
+
+  .game-card-description-container {
+    max-width: 100%;
+    font-size: var(--font-size-medium);
   }
 }

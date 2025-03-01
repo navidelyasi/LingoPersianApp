@@ -50,6 +50,21 @@ io.on("connection", (socket) => {
     socket.emit("updateActivePlayer", gameId, activePlayerIndex);
   });
 
+  socket.on("rollDice", ({ gameId, number }) => {
+    // Direct access to io
+    io.to(`game:${gameId}`).emit("diceRolled", {
+      gameId,
+      number,
+    });
+  });
+
+  socket.on("submitAnswer", ({ gameId, isAnswerCorrect }) => {
+    io.to(`game:${gameId}`).emit("answerSubmitted", {
+      gameId,
+      isAnswerCorrect,
+    });
+  });
+
   socket.on("disconnect", () => {
     console.log("user disconnected");
   });

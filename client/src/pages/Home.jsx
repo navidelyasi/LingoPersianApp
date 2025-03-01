@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { io } from "socket.io-client";
 import { gameMenuAPI } from "../hooks/gameMenuAPI";
+import Broom from "../components/sub-components/Broom";
 import "../styles/home-page.css";
-import { FaUser, FaSignOutAlt, FaStar, FaPlus } from "react-icons/fa";
+import {
+  FaUser,
+  FaSignOutAlt,
+  FaStar,
+  FaPlus,
+  FaDiceSix,
+} from "react-icons/fa";
 import { FaDeleteLeft } from "react-icons/fa6";
 
 function Home({ socket }) {
   const [activeTab, setActiveTab] = useState(
-    localStorage.getItem("activeTab") || "multi-player"
+    localStorage.getItem("activeTab") || "local"
   );
   const navigate = useNavigate();
   const [availableGames, setAvailableGames] = useState([]);
@@ -196,26 +202,24 @@ function Home({ socket }) {
       {/*   ____     Navbar   ____     */}
       <nav className="menu-nav">
         <button
-          className={`menu-nav-button ${
-            activeTab === "multi-player" ? "active" : ""
-          }`}
+          className={`menu-nav-button ${activeTab === "local" ? "active" : ""}`}
           onClick={() => {
-            setActiveTab("multi-player");
-            localStorage.setItem("activeTab", "multi-player");
+            setActiveTab("local");
+            localStorage.setItem("activeTab", "local");
           }}
         >
-          Multi Player
+          Play Locally
         </button>
         <button
           className={`menu-nav-button ${
-            activeTab === "single-player" ? "active" : ""
+            activeTab === "online" ? "active" : ""
           }`}
           onClick={() => {
-            setActiveTab("single-player");
-            localStorage.setItem("activeTab", "single-player");
+            setActiveTab("online");
+            localStorage.setItem("activeTab", "online");
           }}
         >
-          Single Player
+          Play Online
         </button>
         {/* _______________________ logout _______________________ */}
         <button className="logout-button" onClick={logOut}>
@@ -229,84 +233,135 @@ function Home({ socket }) {
         Welcome, {user.name}!
         <FaUser style={{ marginRight: "5px" }} />
         <FaStar style={{ marginRight: "5px", color: "gold" }} />
-      </div>
-
-      {/*   ____     Main Area    _____     */}
-      <div className="games-cards-container">
-        {availableGames.length > 0 && (
-          <>
-            <div className="container-title-text">Available Games: </div>
-            {availableGames.map((game, index) => (
-              <div className="game-card" key={index}>
-                <div className="game-card-text">
-                  game is created by : {game.host_name}
-                </div>
-
-                <div className="game-card-buttons-group">
-                  List of players:
-                  {game.players.map((player, plpayerIndex) => (
-                    <div className="game-card-text" key={plpayerIndex}>
-                      {player.name}
-                    </div>
-                  ))}
-                  {addedToGame === null && (
-                    <button
-                      className="menu-button primary-button"
-                      onClick={() => addMe(game.id)}
-                    >
-                      <div className="single-button-contents">
-                        add me
-                        <FaPlus />
-                      </div>
-                    </button>
-                  )}
-                  {addedToGame === game.id ? (
-                    game.host_id === user.id ? (
-                      <>
-                        <button
-                          className="menu-button primary-button"
-                          onClick={() => startGame(game.id)}
-                        >
-                          Start The Game
-                        </button>
-                        <button
-                          className="menu-button remove-button"
-                          onClick={() => removeGame(game.id)}
-                        >
-                          <div className="single-button-contents">
-                            Remove Game
-                          </div>
-                        </button>
-                      </>
-                    ) : (
-                      <button
-                        className="menu-button remove-button"
-                        onClick={() => removeMe(game.id)}
-                      >
-                        <div className="single-button-contents">
-                          Remove Me
-                          <FaDeleteLeft />
-                        </div>
-                      </button>
-                    )
-                  ) : (
-                    <></>
-                  )}
-                </div>
-              </div>
-            ))}
-          </>
-        )}
-
-        {addedToGame === null && (
+        {activeTab === "local" && (
           <button
             className="create-game-button"
-            onClick={() => createNewGame()}
+            onClick={() => navigate(`/halloween-game`)}
           >
-            Create a new Game
+            Start the Game
           </button>
         )}
       </div>
+
+      {/*   ____     Main Area    _____     */}
+      {activeTab === "online" ? (
+        <div className="games-cards-container">
+          {/*   ____     Main Area for online games   _____     */}
+          {availableGames.length > 0 && (
+            <>
+              <div className="container-title-text">Available Games: </div>
+              {availableGames.map((game, index) => (
+                <div className="game-card" key={index}>
+                  <div className="game-card-text">
+                    game is created by : {game.host_name}
+                  </div>
+
+                  <div className="game-card-buttons-group">
+                    List of players:
+                    {game.players.map((player, plpayerIndex) => (
+                      <div className="game-card-text" key={plpayerIndex}>
+                        {player.name}
+                      </div>
+                    ))}
+                    {addedToGame === null && (
+                      <button
+                        className="menu-button primary-button"
+                        onClick={() => addMe(game.id)}
+                      >
+                        <div className="single-button-contents">
+                          add me
+                          <FaPlus />
+                        </div>
+                      </button>
+                    )}
+                    {addedToGame === game.id ? (
+                      game.host_id === user.id ? (
+                        <>
+                          <button
+                            className="menu-button primary-button"
+                            onClick={() => startGame(game.id)}
+                          >
+                            Start The Game
+                          </button>
+                          <button
+                            className="menu-button remove-button"
+                            onClick={() => removeGame(game.id)}
+                          >
+                            <div className="single-button-contents">
+                              Remove Game
+                            </div>
+                          </button>
+                        </>
+                      ) : (
+                        <button
+                          className="menu-button remove-button"
+                          onClick={() => removeMe(game.id)}
+                        >
+                          <div className="single-button-contents">
+                            Remove Me
+                            <FaDeleteLeft />
+                          </div>
+                        </button>
+                      )
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
+
+          {addedToGame === null && (
+            <button
+              className="create-game-button"
+              onClick={() => createNewGame()}
+            >
+              Create a new Game
+            </button>
+          )}
+        </div>
+      ) : (
+        <div className="game-card-description-container">
+          {/*   ____     Main Area for local games   _____     */}
+          <img
+            src="/pictures/general/halloween/board-halloween.png"
+            alt="halloween-board-menu"
+            className="halloween-board-menu"
+          />
+          <div className="">
+            Welcome to the Halloween Board Game, a thrilling multiplayer
+            adventure inspired by Snakes and Ladders!
+          </div>
+          <div className="">🎲 How to Play:</div>
+          <div className="description-line">
+            🔸 Roll the Dice and move forward.
+            <FaDiceSix className="dice-menu" />
+          </div>
+          <div className="description-line">
+            🔸 Land on a Pumpkin? Answer a question! <br />
+            🔸 A correct answer lets you roll again, <br />
+            🔸 but a wrong one passes the turn.
+            <img
+              src="/pictures/general/halloween/pumpkin-1.png"
+              alt="pumpkin-menu"
+              className="pumpkin-menu"
+            />
+          </div>
+          <div className="description-line">
+            <div>
+              🔸 Step on a Broom? Fly ahead to a higher position. <br />
+              🔸 then let the next player go.
+            </div>
+            <div className="broom-menu">
+              <Broom />
+            </div>
+          </div>
+          <div className="description-line">
+            🏆 First player to reach the final space wins!
+          </div>
+        </div>
+      )}
     </div>
   );
 }

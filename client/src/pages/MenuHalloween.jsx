@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 import { FaDeleteLeft } from "react-icons/fa6";
 
-function Home({ socket }) {
+export default function MenuHalloween({ socket }) {
   const [activeTab, setActiveTab] = useState(
     localStorage.getItem("activeTab") || "local"
   );
@@ -365,5 +365,3 @@ function Home({ socket }) {
     </div>
   );
 }
-
-export default Home;

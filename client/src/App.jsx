@@ -4,7 +4,7 @@ import { io } from "socket.io-client";
 import Login from "./pages/auth-pages/Login.jsx";
 import Signup from "./pages/auth-pages/Signup.jsx";
 import Index from "./pages/Index.jsx";
-import Home from "./pages/Home.jsx";
+import MenuHalloween from "./pages/MenuHalloween.jsx";
 import HalloweenGame from "./pages/HalloweenGame.jsx";
 import LocalHalloweenGame from "./pages/LocalHalloweenGame.jsx";
 import ProtectedRoute from "./pages/auth-pages/ProtectedRoute.jsx";
@@ -43,10 +43,10 @@ function App() {
           }
         />
         <Route
-          path="/home"
+          path="/menu-halloween"
           element={
             <ProtectedRoute>
-              <Home socket={socket} />
+              <MenuHalloween socket={socket} />
             </ProtectedRoute>
           }
         />

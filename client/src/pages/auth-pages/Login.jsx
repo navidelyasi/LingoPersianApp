@@ -32,7 +32,7 @@ export default function Login() {
       if (response.data.success) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem("user-token", response.data.accessToken);
-        navigate("/home");
+        navigate("/menu-halloween");
       } else {
         setError(response.data.message);
       }

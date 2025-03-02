@@ -1,0 +1,39 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  width="64"
+  height="64"
+  fill="none"
+>
+  <!-- Outer Circle -->
+  <circle cx="32" cy="32" r="30" stroke="#4CAF50" stroke-width="4" fill="#F1F8E9" />
+
+  <!-- Clipboard -->
+  <rect
+    x="18"
+    y="16"
+    width="28"
+    height="36"
+    rx="3"
+    ry="3"
+    fill="#FFFFFF"
+    stroke="#388E3C"
+    stroke-width="2"
+  />
+  <rect x="23" y="10" width="18" height="6" rx="2" ry="2" fill="#4CAF50" />
+
+  <!-- Question Mark -->
+  <path
+    d="M32 25c3 0 5-2 5-4s-2-4-5-4-5 2-5 4c0 1 1 2 2 2 1 0 2-1 2-2s-1-1-2-1"
+    stroke="#388E3C"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <circle cx="32" cy="36" r="1.5" fill="#388E3C" />
+
+  <!-- Stars -->
+  <polygon points="24,48 26,53 21,50 27,50 22,53" fill="#FFEB3B" />
+  <polygon points="40,48 42,53 37,50 43,50 38,53" fill="#FFEB3B" />
+</svg>

@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../../styles/auth-page.css";
-import "../../styles/index.css";
+import "../../styles/pages-styles/auth-page.css";
+import "../../styles/pages-styles/index.css";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -12,6 +12,8 @@ export default function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
+
+  const afterSignup = localStorage.getItem("afterSignup");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,7 +42,11 @@ export default function Signup() {
       if (response.data.success) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem("user-token", response.data.accessToken);
-        navigate("/menu-halloween");
+        if (afterSignup) {
+          navigate(afterSignup);
+        } else {
+          navigate("/menu-lingo-practice");
+        }
       } else {
         setError(response.data.message);
       }

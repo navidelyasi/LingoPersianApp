@@ -1,0 +1,114 @@
+.quiz-container {
+  display: grid;
+  grid-template-columns: 250px auto;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  background-color: var(--color-xdark);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  z-index: 1000;
+  border-right: 1px solid var(--color-dark);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: fit-content;
+}
+
+.main-content {
+  grid-column: 2;
+  margin-left: 50px;
+  overflow-y: auto;
+}
+
+.submit-all-button {
+  background-color: transparent;
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: var(--font-size-medium);
+  cursor: pointer;
+}
+
+.quiz-container .submit-all-button:hover {
+  background-color: var(--color-success);
+  color: var(--color-dark);
+}
+
+/* Responsive Styles for Small Screens */
+@media screen and (max-width: 768px) {
+  .quiz-container {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    z-index: 1000;
+  }
+
+  .main-content {
+    grid-column: 1;
+    margin-left: 0;
+    margin-bottom: 120px;
+  }
+
+  .sidebar-questions {
+    flex-direction: row;
+    overflow: hidden;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-right: 20px;
+  }
+
+  .sidebar-questions .general-button,
+  .sidebar-questions .submit-all-button,
+  .sidebar-questions .exit-button {
+    flex: 1;
+    font-size: var(--font-size-small);
+  }
+
+  .sidebar-questions .general-button:hover,
+  .submit-all-button:hover,
+  .sidebar-questions .sidebar-questions .exit-button:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .general-button {
+    font-size: var(--font-size-small);
+    padding: 5px;
+  }
+
+  .general-button.active {
+    transform: scale(1);
+  }
+
+  .submit-all-button:hover {
+    background-color: var(--color-success);
+    color: var(--color-dark);
+  }
+}

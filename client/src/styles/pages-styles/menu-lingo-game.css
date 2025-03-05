@@ -1,0 +1,223 @@
+.main-menu-container {
+  padding: 20px 50px 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.welcome-text {
+  font-size: var(--font-size-large);
+  color: var(--color-light);
+  margin-top: 70px;
+}
+
+/* __________    Main Area  _________   */
+.games-cards-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.7rem;
+  border-top: 1px solid var(--color-light);
+  padding: 1rem;
+  margin: 1rem;
+  flex-wrap: wrap;
+}
+
+.container-title-text {
+  font-size: var(--font-size-medium);
+  color: var(--color-light);
+}
+
+.game-card {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  font-size: var(--font-size-medium);
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+
+.game-card-text {
+  color: var(--color-xdark);
+  font-weight: bold;
+}
+
+.game-card-buttons-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.menu-button {
+  background-color: transparent;
+  border: 1px solid var(--color-dark);
+  color: var(--color-dark);
+  font-size: var(--font-size-medium);
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.menu-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.menu-button.primary-button {
+  border: 1px solid var(--color-dark);
+  color: var(--color-dark);
+}
+
+.menu-button.primary:hover {
+  background-color: var(--color-success);
+  color: var(--color-dark);
+}
+
+.menu-button.remove-button {
+  border: 1px solid var(--color-red);
+  color: var(--color-red);
+}
+
+.menu-button.remove-button:hover {
+  background-color: var(--color-red);
+  color: var(--color-dark);
+}
+
+.single-button-contents {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.create-game-button {
+  background-color: transparent;
+  color: var(--color-success);
+  font-size: var(--font-size-large);
+  border: 1px solid var(--color-success);
+  padding: 5px 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.create-game-button:hover {
+  background-color: var(--color-success);
+  color: var(--color-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* __________    Game Card Description  _________   */
+.game-card-description-container {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-top: 1px solid var(--color-light);
+  padding: 10px;
+  margin: 10px;
+  font-size: var(--font-size-large);
+  color: var(--color-light);
+  position: relative;
+}
+
+.description-line {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--color-light);
+}
+
+.dice-menu {
+  margin-left: 20px;
+  width: 60px;
+  height: 60px;
+  animation: shaking-dice-in-menu 1s ease-in-out infinite;
+}
+
+.pumpkin-menu {
+  width: 100px;
+  height: 100px;
+  animation: shaking-pumpkin-in-menu 1s ease-in-out infinite;
+}
+
+.broom-menu {
+  width: 50px;
+  height: 50px;
+  animation: shaking-broom-in-menu 1s ease-in-out infinite;
+}
+
+@keyframes shaking-dice-in-menu {
+  0% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(300px) rotate(360deg);
+  }
+}
+@keyframes shaking-pumpkin-in-menu {
+  0% {
+    transform: rotate(0deg);
+    scale: 1;
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+    scale: 1.5;
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+    scale: 1;
+  }
+}
+@keyframes shaking-broom-in-menu {
+  0% {
+    transform: rotate(0deg);
+    scale: 1;
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+    scale: 1.3;
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+    scale: 1;
+  }
+}
+
+.halloween-board-menu {
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.2;
+}
+
+/* __________    Screen  _________   */
+@media screen and (max-width: 768px) {
+  .main-menu-container {
+    padding: 20px 5px 20px;
+  }
+  .logout-button {
+    padding: 3px 6px;
+  }
+
+  .game-card-description-container {
+    max-width: 100%;
+    font-size: var(--font-size-medium);
+  }
+}

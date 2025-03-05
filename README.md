@@ -45,7 +45,6 @@ General description:
   - HomePage.jsx: Home page
   - GamePage.jsx: Game page
 - src/styles:
-  - game-page.css: Game page styles
   - login-page.css: Login page styles
   - signup-page.css: Signup page styles
 - src/hooks:

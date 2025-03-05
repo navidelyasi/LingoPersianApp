@@ -1,0 +1,146 @@
+.main-menu-container {
+  padding: 20px 50px 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.welcome-text {
+  font-size: var(--font-size-large);
+  color: var(--color-light);
+  margin-top: 70px;
+}
+
+.title-text {
+  font-size: var(--font-size-medium);
+  color: var(--color-light);
+}
+
+.quiz-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 0.7rem;
+  border-top: 1px solid var(--color-light);
+  padding: 1rem;
+  margin: 1rem;
+  flex-wrap: wrap;
+}
+
+.logout-button {
+  background-color: transparent;
+  color: var(--color-red);
+  border: 1px solid var(--color-red);
+  font-size: var(--font-size-medium);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: var(--color-red);
+  color: var(--color-xdark);
+  font-weight: bold;
+}
+
+.menu-button {
+  padding: 5px 10px;
+  background-color: transparent;
+  border: 1px solid var(--color-dark);
+  border-radius: 8px;
+  color: var(--color-dark);
+  cursor: pointer;
+  font-size: var(--font-size-medium);
+  font-weight: 600;
+  height: 30px;
+  float: bottom;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.menu-button.practice-button {
+  border: 1px solid var(--color-dark);
+  color: var(--color-dark);
+}
+
+.menu-button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-xdark);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(97, 218, 251, 0.4);
+}
+
+.menu-button.practice-button:hover {
+  background-color: var(--color-success);
+  color: var(--color-xdark);
+}
+
+.menu-button.done {
+  background-color: var(--color-success);
+  color: var(--color-xdark);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.top-button {
+  border-radius: 8px 8px 0 0;
+}
+
+.bottom-button {
+  border-radius: 0 0 8px 8px;
+}
+
+.menu-button-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.unit-card {
+  border: 1px solid var(--color-light);
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  font-size: var(--font-size-medium);
+  border-radius: 8px;
+  padding: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+  z-index: 3000;
+}
+
+.unit-card:hover {
+  border: 1px solid var(--color-light);
+  background-color: transparent;
+  color: var(--color-light);
+  z-index: 1;
+}
+
+.unit-card.game-card {
+  padding: 5px 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .main-menu-container {
+    padding: 20px 5px 20px;
+  }
+}

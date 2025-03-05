@@ -1,0 +1,37 @@
+.fill-input-container {
+  padding: 20px;
+  margin: 0 auto;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.fill-input-container h2 {
+  color: var(--color-primary);
+  margin: 10px;
+  text-align: center;
+}
+
+.fill-content {
+  background-color: var(--color-xdark);
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.paragraph {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  gap: 10px;
+  margin: 5px;
+  padding: 5px;
+  align-items: center;
+}
+
+.text {
+  margin: 5px;
+  font-size: var(--font-size-medium);
+  align-items: center;
+  text-align: justify;
+}

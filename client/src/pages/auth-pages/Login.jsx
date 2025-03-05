@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../../styles/auth-page.css";
-import "../../styles/index.css";
+import "../../styles/pages-styles/auth-page.css";
+import "../../styles/pages-styles/index.css";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -10,6 +10,16 @@ export default function Login() {
   const passwordRef = useRef();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const testAccounts = [
+    "test1@me.com",
+    "test2@me.com",
+    "test3@me.com",
+    "test4@me.com",
+    "test5@me.com",
+  ];
+
+  const afterLogin = localStorage.getItem("afterLogin");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,17 +37,18 @@ export default function Login() {
         { headers: { "Content-Type": "application/json" } }
       );
 
-      console.log("response from login :", response.data);
-
       if (response.data.success) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem("user-token", response.data.accessToken);
-        navigate("/menu-halloween");
+        if (afterLogin) {
+          navigate(afterLogin);
+        } else {
+          navigate("/menu-lingo-practice");
+        }
       } else {
         setError(response.data.message);
       }
 
-      console.log("Login Successful:", response.data);
       setLoading(false);
     } catch (error) {
       console.error(
@@ -49,9 +60,32 @@ export default function Login() {
     }
   };
 
+  function loginWithTestAccount(account) {
+    usernameRef.current.value = account;
+    passwordRef.current.value = "test123";
+    handleSubmit({ preventDefault: () => {} });
+  }
+
   return (
     <div className="login-container">
       <h1 className="login-title">Login Page</h1>
+      <div className="test-accounts-container">
+        <div className="login-info">
+          for testing purposes use one of the follwong test accounts to login
+        </div>
+        <div className="test-accounts">
+          {testAccounts.map((account) => (
+            <button
+              key={account}
+              onClick={() => {
+                loginWithTestAccount(account);
+              }}
+            >
+              {account}
+            </button>
+          ))}
+        </div>
+      </div>
       {error && <p className="error-message">{error}</p>}
       <form className="login-form" onSubmit={handleSubmit}>
         <input

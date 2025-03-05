@@ -1,0 +1,188 @@
+.game-menu-content {
+  display: flex;
+  max-width: 1000px;
+  gap: 20px;
+}
+
+.game-menu-content button {
+  width: 500px;
+  height: 500px;
+  background-color: var(--color-xdark);
+  color: var(--color-primary);
+  font-size: var(--font-size-large);
+  border: none;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-menu-content button:hover {
+  background-color: transparent;
+  border: 3px solid var(--color-xdark);
+  transform: translateY(-2px);
+}
+.game-menu-content button:hover .shaking-pumpkin-menu {
+  scale: 3;
+}
+.game-menu-content button:hover .broom-hat-menu {
+  animation: floatInTop 0.5s ease-in-out forwards;
+}
+.game-menu-content button:hover .broom-tail-menu {
+  animation: floatInBottom 0.5s ease-in-out forwards;
+}
+.game-menu-content button:hover .broom-body-menu {
+  animation: floatInBottom 0.5s ease-in-out forwards;
+}
+
+.shaking-pumpkin-menu {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 42%;
+  top: 42%;
+  z-index: 50;
+  scale: 6;
+}
+
+.broom-hat-menu {
+  width: 50px;
+  height: 40px;
+  position: absolute;
+  left: 47%;
+  top: 14%;
+  z-index: 52;
+  scale: 2;
+  rotate: 30deg;
+  opacity: 0;
+}
+
+.broom-tail-menu {
+  width: 48px;
+  height: 46px;
+  position: absolute;
+  left: 19%;
+  top: 70%;
+  z-index: 53;
+  scale: 2;
+  rotate: -10deg;
+  opacity: 0;
+}
+
+.broom-body-menu {
+  width: 55px;
+  height: 77px;
+  position: absolute;
+  left: 36%;
+  top: 37%;
+  z-index: 51;
+  scale: 2;
+  opacity: 0;
+}
+
+.game-menu-button-img {
+  border-radius: 12px;
+  background-color: var(--color-light);
+  padding: 20px;
+  margin: 20px;
+  width: 90%;
+  height: 90%;
+  position: relative;
+}
+
+.game-menu-button-img:hover {
+  background-color: white;
+}
+
+.memory-game-icon {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*   ____________________________  */
+/*   _______     Overlay     ____  */
+/*   ____________________________  */
+
+@keyframes floatInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flyBroom {
+  0% {
+    transform: rotate(0deg) translateX(100px);
+  }
+  25% {
+    transform: rotate(-90deg) translateX(100px);
+  }
+  50% {
+    transform: rotate(-180deg) translateX(100px);
+  }
+  75% {
+    transform: rotate(-270deg);
+  }
+  100% {
+    transform: rotate(-360deg) translateX(100px);
+  }
+}
+
+.flying-broom {
+  position: absolute;
+  width: 100px;
+  top: 20%;
+  left: 50%;
+  transform-origin: center;
+  animation: flyBroom 10s infinite linear;
+  z-index: 1005;
+  will-change: transform;
+}
+
+@media screen and (max-width: 768px) {
+  .game-menu-content {
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+  }
+  .game-menu-content button {
+    width: 300px;
+    height: 300px;
+    justify-content: flex-start;
+  }
+
+  .shaking-pumpkin-menu {
+    scale: 4;
+  }
+  .broom-body-menu {
+    scale: 1.1;
+  }
+  .broom-hat-menu {
+    scale: 1.1;
+  }
+  .broom-tail-menu {
+    scale: 1.1;
+    left: 22%;
+    top: 75%;
+  }
+}

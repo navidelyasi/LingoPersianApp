@@ -39,11 +39,18 @@ General description:
 2. client:
 
 - src/pages:
+
   - App.jsx: Main app component
   - LoginPage.jsx: Login page
   - SignupPage.jsx: Signup page
-  - HomePage.jsx: Home page
-  - GamePage.jsx: Game page
+  - IndexPage.jsx: Index page without login
+  - ProfilePage.jsx: Profile page
+  - MenuLingoGame.jsx: Menu for Halloween Game page
+  - MemoryGame.jsx: Memory Game page
+  - LocalHalloweenGame.jsx: Local Halloween Game page
+  - OnlineHalloweenGame.jsx: Online Halloween Game
+  - MenuLingoPractice.jsx: Menu for Lingo Practice page
+
 - src/styles:
   - login-page.css: Login page styles
   - signup-page.css: Signup page styles
